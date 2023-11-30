@@ -20,8 +20,9 @@ class Story:
 
     def __init__(self, words, text):
         """Create story with words and template text."""
-
+        #prompts is a list of words
         self.prompts = words
+        #template is the story string passed in with prompt
         self.template = text
 
     def get_result_text(self, answers):
