@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %} Choose Story {% endblock %}
+
+{% block content %}
+
+<div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle"
+          data-bs-toggle="dropdown"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false">
+    Select Story
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="http://localhost:5000/madlibs">Silly Story</a>
+    <a class="dropdown-item" href="http://localhost:5000/madlibs">Excited Story</a>
+  </div>
+</div>
+
+{% endblock %}

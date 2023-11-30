@@ -7,8 +7,15 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = "secret"
 
 debug = DebugToolbarExtension(app)
-# TODO: Should rename the route to homepage, not madlibs, so should be "/"
-@app.get('/madlibs')
+
+@app.get('/')
+def show_dropdown():
+    return render_template(
+        "homepage.html"
+    )
+
+
+@app.get('/madlib-form')
 def show_form():
     """Show Madlibs form"""
     # questions = silly_story.prompts
@@ -20,22 +27,8 @@ def show_form():
 @app.get('/results')
 def show_story():
     """Generate answers dictionary and show Madlibs result"""
-    # TODO: Remove line 24, 32-39, redundant. Only need to pass in request.args,
-    # this is already a dict like object (polymorphic to dict) made up of the
-    # query items
-    answers = get_answers()
     return render_template(
         "results.html",
-        story=silly_story.get_result_text(answers)
+        story=silly_story.get_result_text(request.args)
     )
 
-
-
-def get_answers():
-    """Makes and returns a dictionary made up of key/value pairs from the
-    madlib form"""
-    prompts = silly_story.prompts
-    answers = {}
-    for prompt in prompts:
-        answers[prompt] = request.args.get(prompt)
-    return answers
