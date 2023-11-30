@@ -12,8 +12,8 @@ debug = DebugToolbarExtension(app)
 def form():
     """Show Madlibs form"""
     questions = silly_story.prompts
+    print("questions:", questions)
     return render_template(
-        "questions.html",
-        prompts = questions
+        "questions.html"
 )
 
